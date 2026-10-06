@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garent - Transaction Data</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="container">
+    <header class="dash-header">
+      <nav class="dash-nav">
+        <a href="../index.html" class="logo" style="font-size:32px; font-weight:900; color:#000; text-decoration:none;">GARENT</a>
+        <ul>
+          <li><a href="../dashboard.html">Dashboard</a></li>
+          <li><a href="transaction.html" class="active">Transaction</a></li>
+          <li><a href="../category/category.html">Category</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main style="margin-top: 30px;">
+      <h2>Data Transaksi Penyewaan</h2>
+      <table class="table-data" style="margin-top: 20px;">
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Nama Pemesan</th>
+            <th>Unit Konsol</th>
+            <th>Durasi</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01-10-2026</td>
+            <td>Andreas</td>
+            <td>PlayStation 5</td>
+            <td>2 Hari</td>
+            <td><span style="color:green; font-weight:bold;">Lunas</span></td>
+            <td>
+              <button class="btn-action">Detail</button>
+              <button class="btn-action btn-delete">Hapus</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>
