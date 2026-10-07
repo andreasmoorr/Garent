@@ -16,7 +16,6 @@ body {
   margin: 30px auto;
 }
 
-/* Top Navigation Dashboard */
 header.dash-header {
   padding: 25px 0;
   border-bottom: 1px solid #eee;
@@ -46,7 +45,6 @@ nav.dash-nav ul li a.active {
   font-weight: 700;
 }
 
-/* Cards Ringkasan Stat */
 .stats-grid {
   display: flex;
   gap: 20px;
@@ -75,7 +73,6 @@ nav.dash-nav ul li a.active {
   font-weight: 800;
 }
 
-/* Tabel Data Admin */
 .table-container {
   margin-top: 30px;
 }
@@ -106,7 +103,6 @@ nav.dash-nav ul li a.active {
   border-bottom: 1px solid #eee;
 }
 
-/* Form Entry/Input Data */
 .form-card {
   border: 1.5px solid #111;
   border-radius: 15px;
@@ -151,7 +147,6 @@ nav.dash-nav ul li a.active {
   background-color: #e63946;
 }
 
-/* Responsive Dashboard */
 @media screen and (max-width: 768px) {
   nav.dash-nav {
     flex-direction: column;
