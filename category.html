@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garent - Category</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* Styling Custom Snackbar (Pop-Up Box Kustom) */
+    #snackbar {
+      visibility: hidden;
+      min-width: 280px;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 14px 20px;
+      position: fixed;
+      z-index: 9999;
+      left: 50%;
+      top: 30px;
+      transform: translateX(-50%);
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: visibility 0.5s, opacity 0.5s, top 0.5s;
+      opacity: 0;
+    }
+    #snackbar.show {
+      visibility: visible;
+      opacity: 1;
+      top: 30px;
+    }
+
+    .catalog-container {
+      width: 85%;
+      margin: 40px auto;
+    }
+    .catalog-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #111;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .product-card {
+      background: #fff;
+      border: 2px solid transparent;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+    .product-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .product-card .price {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+    }
+    #rental-section {
+      display: none;
+      background: #eef0f2;
+      border-radius: 30px;
+      padding: 40px;
+      margin-top: 20px;
+    }
+    .rental-wrapper {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .rental-img {
+      flex: 1;
+      text-align: center;
+    }
+    .rental-img img {
+      max-width: 100%;
+      height: 350px;
+      object-fit: contain;
+    }
+    .rental-form {
+      flex: 1;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .duration-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .duration-btn {
+      padding: 8px 20px;
+      border: 1.5px solid #111;
+      border-radius: 20px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .duration-btn.active {
+      background: #111;
+      color: #fff;
+    }
+    .form-group-cat {
+      margin-bottom: 15px;
+    }
+    .form-group-cat label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    .form-group-cat input, .form-group-cat textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .btn-rent {
+      background: #111;
+      color: #fff;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body onload="inisialisasiHalaman()">
+  <!-- Wadah Pop-Up Kustom (Snackbar) -->
+  <div id="snackbar"></div>
+
+  <div class="container">
+    <header>
+      <nav>
+        <a href="index.html" class="logo">GARENT</a>
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="category.html" class="nav-link active">Category</a></li>
+          <li><a href="register.html" class="nav-link">Register</a></li>
+          <li><a href="login.html" class="btn_login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- KELOMPOK KATALOG -->
+    <div id="catalog-view" class="catalog-container">
+      <h2 class="catalog-title" id="salam-user">Katalog Perangkat Rental</h2>
+      <div class="product-grid">
+        <!-- Kartu 1: PS5 -->
+        <div class="product-card" onclick="pilihProduk('PlayStation 5', '67676', 'asset/ps5.png')">
+          <img src="asset/ps5.png" alt="PlayStation 5">
+          <h3>PlayStation 5</h3>
+          <p class="price">Rp. 67.676</p>
+        </div>
+        <!-- Kartu 2: VR Headset -->
+        <div class="product-card" onclick="pilihProduk('VR Headset', '67676', 'asset/vr.png')">
+          <img src="asset/vr.png" alt="VR Headset">
+          <h3>VR Headset</h3>
+          <p class="price">Rp. 67.676</p>
+        </div>
+        <!-- Kartu 3: Nintendo Switch -->
+        <div class="product-card" onclick="pilihProduk('Nintendo Switch', '67676', 'asset/nintendo.png')">
+          <img src="asset/nintendo.png" alt="Nintendo Switch">
+          <h3>Nintendo Switch</h3>
+          <p class="price">Rp. 67.676</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KELOMPOK FORM SEWA -->
+    <div id="rental-section">
+      <button onclick="kembaliKeKatalog()" style="margin-bottom: 20px; padding: 6px 15px; border-radius: 10px; border: 1px solid #111; background: #fff; cursor: pointer; font-weight: 600;">← Kembali ke Katalog</button>
+      <div class="rental-wrapper">
+        <div class="rental-img">
+          <img id="detail-img" src="" alt="Perangkat">
+        </div>
+        <div class="rental-form">
+          <h3 style="margin-bottom: 15px;">Lama Sewa</h3>
+          <div class="duration-options">
+            <button type="button" class="duration-btn active" onclick="pilihDurasi(this, '1 Jam')">1 Jam</button>
+            <button type="button" class="duration-btn" onclick="pilihDurasi(this, '12 Jam')">12 Jam</button>
+            <button type="button" class="duration-btn" onclick="pilihDurasi(this, '24 Jam')">24 Jam</button>
+          </div>
+          <!-- Tanpa required agar validasi murni di handle oleh JavaScript & Custom Snackbar -->
+          <form id="form-penyewaan" onsubmit="prosesRentNow(event)">
+            <div class="form-group-cat">
+              <label>Name</label>
+              <input type="text" id="rental-nama">
+            </div>
+            <div class="form-group-cat">
+              <label>Phone Number</label>
+              <input type="text" id="rental-hp">
+            </div>
+            <div class="form-group-cat">
+              <label>Alamat</label>
+              <textarea id="rental-alamat" rows="2"></textarea>
+            </div>
+            <h3 id="detail-harga" style="margin: 15px 0; font-size: 20px;">Rp. 67.676</h3>
+            <button type="submit" class="btn-rent">Rent Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
