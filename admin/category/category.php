@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
+    header("Location: ../../login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -11,18 +18,18 @@
   <div class="container">
     <header class="dash-header">
       <nav class="dash-nav">
-        <a href="../../index.html" class="logo" style="font-size:32px; font-weight:900; color:#000; text-decoration:none;">GARENT</a>
+        <a href="../../index.php" class="logo" style="font-size:32px; font-weight:900; color:#000; text-decoration:none;">GARENT</a>
         <ul>
-          <li><a href="../dashboard.html">Dashboard</a></li>
-          <li><a href="../transaction/transaction.html">Transaction</a></li>
-          <li><a href="category.html" class="active">Category</a></li>
+          <li><a href="../dashboard.php">Dashboard</a></li>
+          <li><a href="../transaction/transaction.php">Transaction</a></li>
+          <li><a href="category.php" class="active">Category</a></li>
+          <li><a href="../../logout.php" class="logout">Logout</a></li>
         </ul>
       </nav>
     </header>
-
     <main style="margin-top: 30px;">
       <h2>Data Kategori Unit</h2>
-      <a href="category-entry.html" class="btn-action" style="margin: 15px 0;">+ Tambah Kategori</a>
+      <a href="category-entry.php" class="btn-action" style="margin: 15px 0;">+ Tambah Kategori</a>
 
       <table class="table-data">
         <thead>

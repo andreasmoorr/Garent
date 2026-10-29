@@ -1,3 +1,7 @@
+<?php
+session_start();
+$halaman_aktif = "category";
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -154,17 +158,7 @@
   <div id="snackbar"></div>
 
   <div class="container">
-    <header>
-      <nav>
-        <a href="index.html" class="logo">GARENT</a>
-        <ul>
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="category.html" class="nav-link active">Category</a></li>
-          <li><a href="register.html" class="nav-link">Register</a></li>
-          <li><a href="login.html" class="btn_login">Login</a></li>
-        </ul>
-      </nav>
-    </header>
+    <?php include 'includes/navbar.php'; ?>
 
     <!-- KELOMPOK KATALOG -->
     <div id="catalog-view" class="catalog-container">

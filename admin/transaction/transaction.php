@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
+    header("Location: ../../login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -11,11 +18,12 @@
   <div class="container">
     <header class="dash-header">
       <nav class="dash-nav">
-        <a href="../../index.html" class="logo" style="font-size:32px; font-weight:900; color:#000; text-decoration:none;">GARENT</a>
+        <a href="../../index.php" class="logo" style="font-size:32px; font-weight:900; color:#000; text-decoration:none;">GARENT</a>
         <ul>
-          <li><a href="../dashboard.html">Dashboard</a></li>
-          <li><a href="transaction.html" class="active">Transaction</a></li>
-          <li><a href="../category/category.html">Category</a></li>
+          <li><a href="../dashboard.php">Dashboard</a></li>
+          <li><a href="transaction.php" class="active">Transaction</a></li>
+          <li><a href="../category/category.php">Category</a></li>
+          <li><a href="../../logout.php" class="logout">Logout</a></li>
         </ul>
       </nav>
     </header>

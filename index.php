@@ -1,3 +1,7 @@
+<?php
+session_start();
+$halaman_aktif = "home";
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -40,22 +44,15 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <nav>
-        <a href="index.html" class="logo" id="logo-teks">GARENT</a>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="category.html">Category</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="login.html" class="btn_login">Login</a></li>
-        </ul>
-      </nav>
-    </header>
+    <?php include 'includes/navbar.php'; ?>
 
     <main class="hero">
+      <?php if (isset($_SESSION['username'])) { ?>
+      <h3 class="sapaan" id="sapaan-user">Halo, <?php echo htmlspecialchars($_SESSION['username']); ?></h3>
+      <?php } ?>
       <h1 id="judul-utama">Upgrade Pengalaman Gaming-mu Tanpa Bikin Kantong Jebol</h1>
       <p id="deskripsi">Solusi praktis hiburan game untuk akhir pekan, acara kumpul teman, atau sekadar coba unit baru sebelum membeli.</p>
-      
+
       <!-- Tombol untuk memicu DOM & Toast -->
       <a href="#" class="btn_jelajahi" onclick="prosesJelajahi(event)">Jelajahi Unit</a>
       <button type="button" id="btn-tema" onclick="ubahTema()" style="margin-left: 10px; padding: 10px 22px; border-radius: 20px; border: 1.5px solid #000; background: #fff; color: #000; cursor: pointer; font-weight: 600;">Ubah Tema</button>

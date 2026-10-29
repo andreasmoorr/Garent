@@ -1,9 +1,31 @@
+<?php
+session_start();
+
+$pesan = "";
+
+if (isset($_POST['username'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $confirm  = trim($_POST['confirm']);
+
+    if ($username == "" || $password == "" || $confirm == "") {
+        $pesan = "Peringatan: Semua kolom wajib diisi!";
+    } elseif ($password != $confirm) {
+        $pesan = "Peringatan: Password dan Confirm Password tidak sama!";
+    } else {
+        header("Location: login.php");   // sama seperti action="login.html" pada versi awal
+        exit;
+    }
+}
+
+$halaman_aktif = "register";
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Garent - Login</title>
+  <title>Garent - Register</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -34,41 +56,36 @@
   </style>
 </head>
 <body>
-  <!-- Wadah Pop-Up Kustom (Snackbar) -->
   <div id="snackbar"></div>
 
   <div class="container">
-    <header>
-      <nav>
-        <a href="index.html" class="logo">GARENT</a>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="category.html">Category</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="login.html" class="btn_login">Login</a></li>
-        </ul>
-      </nav>
-    </header>
+    <?php include 'includes/navbar.php'; ?>
 
     <main class="center">
       <div class="form-auth">
         <h2>Halo!</h2>
-        <p class="subtitle">Masuk akun anda</p>
-        <form action="admin/dashboard.html" onsubmit="validasiFormLogin(event)">
+        <p class="subtitle">Daftar akun anda!</p>
+        <form action="" method="post" onsubmit="validasiFormLogin(event)">
           <div class="input-group">
             <label for="user">Username/Email</label>
-            <input type="text" id="user">
+            <input type="text" id="user" name="username">
           </div>
           <div class="input-group">
             <label for="pass">Password</label>
-            <input type="password" id="pass">
+            <input type="password" id="pass" name="password">
           </div>
-          <button type="submit" class="btn_submit">Login</button>
+          <div class="input-group">
+            <label for="confirm">Confirm Password</label>
+            <input type="password" id="confirm" name="confirm">
+          </div>
+          <button type="submit" class="btn_submit">Register</button>
         </form>
-        <a href="register.html" class="link-auth">Belum Punya akun? <strong>Daftar disini</strong></a>
       </div>
     </main>
   </div>
   <script src="js/script.js"></script>
+  <?php if ($pesan != "") { ?>
+  <script>tampilkanSnackbar("<?php echo $pesan; ?>");</script>
+  <?php } ?>
 </body>
 </html>
