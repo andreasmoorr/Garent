@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
-    header("Location: ../../login.php");
-    exit;
+if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
+  header('location:../../login.php');
+  exit;
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
           <li><a href="../dashboard.php">Dashboard</a></li>
           <li><a href="../transaction/transaction.php">Transaction</a></li>
           <li><a href="category.php" class="active">Category</a></li>
-          <li><a href="../../logout.php" class="logout">Logout</a></li>
+          <li><a href="../../logout.php">Logout</a></li>
         </ul>
       </nav>
     </header>
@@ -33,14 +33,22 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
       <div class="form-card">
         <form action="category-proses.php" method="post" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="nama">Nama Kategori Unit</label>
-            <input type="text" id="nama" name="nama" placeholder="Contoh: Xbox Series X" required>
+            <label for="nama_kategori">Nama Kategori Unit</label>
+            <input type="text" id="nama_kategori" name="nama_kategori" placeholder="Contoh: Xbox Series X">
           </div>
           <div class="form-group">
-            <label for="harga">Harga Sewa Per Hari</label>
-            <input type="text" id="harga" name="harga" placeholder="Contoh: 120000" required>
+            <label for="harga_sewa">Harga Sewa Per Hari</label>
+            <input type="number" id="harga_sewa" name="harga_sewa" placeholder="Contoh: 120000">
           </div>
-          <button type="submit" name="simpan" class="btn-action">Simpan Data</button>
+          <div class="form-group">
+            <label for="deskripsi">Deskripsi</label>
+            <textarea id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi unit"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="photo">Foto</label>
+            <input type="file" id="photo" name="photo">
+          </div>
+          <button type="submit" class="btn-action" name="simpan">Simpan Data</button>
         </form>
       </div>
     </main>

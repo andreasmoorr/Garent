@@ -1,33 +1,3 @@
-<?php
-session_start();
-
-$pesan = "";
-$username = "";
-
-// Form login dikirim ke halaman ini sendiri
-if (isset($_POST['username'])) {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-
-    if ($username == "" || $password == "") {
-        $pesan = "Peringatan: Username dan Password tidak boleh kosong!";
-    } elseif ($username == "admin" && $password == "admin123") {
-        // Admin -> area admin
-        $_SESSION['username'] = $username;
-        $_SESSION['role'] = "admin";
-        header("Location: admin/dashboard.php");
-        exit;
-    } else {
-        // User biasa -> tetap di website utama
-        $_SESSION['username'] = $username;
-        $_SESSION['role'] = "user";
-        header("Location: index.php");
-        exit;
-    }
-}
-
-$halaman_aktif = "login";
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -64,19 +34,30 @@ $halaman_aktif = "login";
   </style>
 </head>
 <body>
+  <!-- Wadah Pop-Up Kustom (Snackbar) -->
   <div id="snackbar"></div>
 
   <div class="container">
-    <?php include 'includes/navbar.php'; ?>
+    <header>
+      <nav>
+        <a href="index.php" class="logo">GARENT</a>
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="category.php">Category</a></li>
+          <li><a href="register.php">Register</a></li>
+          <li><a href="login.php" class="btn_login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <main class="center">
       <div class="form-auth">
         <h2>Halo!</h2>
         <p class="subtitle">Masuk akun anda</p>
-        <form action="" method="post" onsubmit="validasiFormLogin(event)">
+        <form action="login-proses.php" method="post" onsubmit="validasiFormLogin(event)">
           <div class="input-group">
             <label for="user">Username/Email</label>
-            <input type="text" id="user" name="username" value="<?php echo htmlspecialchars($username); ?>">
+            <input type="text" id="user" name="username">
           </div>
           <div class="input-group">
             <label for="pass">Password</label>
@@ -89,8 +70,5 @@ $halaman_aktif = "login";
     </main>
   </div>
   <script src="js/script.js"></script>
-  <?php if ($pesan != "") { ?>
-  <script>tampilkanSnackbar("<?php echo $pesan; ?>");</script>
-  <?php } ?>
 </body>
 </html>

@@ -164,7 +164,6 @@ nav.dash-nav ul li a.active {
   }
 }
 
-/* Bab 5: tombol Logout pada menu admin */
 nav.dash-nav ul li a.logout {
   color: #e63946;
   font-weight: 700;

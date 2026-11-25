@@ -1,25 +1,3 @@
-<?php
-session_start();
-
-$pesan = "";
-
-if (isset($_POST['username'])) {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    $confirm  = trim($_POST['confirm']);
-
-    if ($username == "" || $password == "" || $confirm == "") {
-        $pesan = "Peringatan: Semua kolom wajib diisi!";
-    } elseif ($password != $confirm) {
-        $pesan = "Peringatan: Password dan Confirm Password tidak sama!";
-    } else {
-        header("Location: login.php");   // sama seperti action="login.html" pada versi awal
-        exit;
-    }
-}
-
-$halaman_aktif = "register";
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -56,16 +34,27 @@ $halaman_aktif = "register";
   </style>
 </head>
 <body>
+  <!-- Wadah Pop-Up Kustom (Snackbar) -->
   <div id="snackbar"></div>
 
   <div class="container">
-    <?php include 'includes/navbar.php'; ?>
+    <header>
+      <nav>
+        <a href="index.php" class="logo">GARENT</a>
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="category.php">Category</a></li>
+          <li><a href="register.php">Register</a></li>
+          <li><a href="login.php" class="btn_login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <main class="center">
       <div class="form-auth">
         <h2>Halo!</h2>
         <p class="subtitle">Daftar akun anda!</p>
-        <form action="" method="post" onsubmit="validasiFormLogin(event)">
+        <form action="register-proses.php" method="post" onsubmit="validasiFormLogin(event)">
           <div class="input-group">
             <label for="user">Username/Email</label>
             <input type="text" id="user" name="username">
@@ -78,14 +67,11 @@ $halaman_aktif = "register";
             <label for="confirm">Confirm Password</label>
             <input type="password" id="confirm" name="confirm">
           </div>
-          <button type="submit" class="btn_submit">Register</button>
+          <button type="submit" class="btn_submit" name="register">Register</button>
         </form>
       </div>
     </main>
   </div>
   <script src="js/script.js"></script>
-  <?php if ($pesan != "") { ?>
-  <script>tampilkanSnackbar("<?php echo $pesan; ?>");</script>
-  <?php } ?>
 </body>
 </html>

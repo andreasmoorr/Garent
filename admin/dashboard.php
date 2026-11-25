@@ -1,9 +1,8 @@
 <?php
 session_start();
-// Area admin: hanya boleh dibuka jika yang login adalah admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
-    header("Location: ../login.php");
-    exit;
+if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
+  header('location:../login.php');
+  exit;
 }
 ?>
 <!DOCTYPE html>
@@ -24,12 +23,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
           <li><a href="dashboard.php" class="active">Dashboard</a></li>
           <li><a href="transaction/transaction.php">Transaction</a></li>
           <li><a href="category/category.php">Category</a></li>
-          <li><a href="../logout.php" class="logout">Logout</a></li>
+          <li><a href="../logout.php">Logout</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
+      <h2 style="margin-top: 30px;">Selamat Datang, <?= $_SESSION['username'] ?></h2>
+
       <div class="stats-grid">
         <div class="stat-card">
           <h4>Sewa Aktif</h4>

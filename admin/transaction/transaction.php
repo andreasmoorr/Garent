@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
-    header("Location: ../../login.php");
-    exit;
+if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
+  header('location:../../login.php');
+  exit;
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != "admin") {
           <li><a href="../dashboard.php">Dashboard</a></li>
           <li><a href="transaction.php" class="active">Transaction</a></li>
           <li><a href="../category/category.php">Category</a></li>
-          <li><a href="../../logout.php" class="logout">Logout</a></li>
+          <li><a href="../../logout.php">Logout</a></li>
         </ul>
       </nav>
     </header>
